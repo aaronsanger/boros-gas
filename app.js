@@ -147,6 +147,9 @@ class SlidePresentation {
     `;
     document.body.appendChild(imageModal);
     this.zoomLevel = 1;
+    this.panX = 0;
+    this.panY = 0;
+    this.initImageDrag();
   }
 
   openImageModal(src, alt) {
@@ -158,7 +161,10 @@ class SlidePresentation {
     modalImage.alt = alt;
     modalCaption.textContent = alt;
     this.zoomLevel = 1;
-    modalImage.style.transform = `scale(1)`;
+    this.panX = 0;
+    this.panY = 0;
+    this.applyTransform();
+    modalImage.style.cursor = 'default';
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -187,12 +193,80 @@ class SlidePresentation {
 
   zoomReset() {
     this.zoomLevel = 1;
-    this.applyZoom();
+    this.panX = 0;
+    this.panY = 0;
+    this.applyTransform();
   }
 
   applyZoom() {
+    this.applyTransform();
+  }
+
+  applyTransform() {
     const modalImage = document.getElementById('modalImage');
-    modalImage.style.transform = `scale(${this.zoomLevel})`;
+    modalImage.style.transform = `scale(${this.zoomLevel}) translate(${this.panX}px, ${this.panY}px)`;
+  }
+
+  initImageDrag() {
+    const modalImage = document.getElementById('modalImage');
+    const container = document.querySelector('.image-modal-container');
+
+    let isDragging = false;
+    let startX, startY;
+    let lastPanX, lastPanY;
+
+    // Mouse events
+    modalImage.addEventListener('mousedown', (e) => {
+      if (this.zoomLevel > 1) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        lastPanX = this.panX;
+        lastPanY = this.panY;
+        modalImage.style.cursor = 'grabbing';
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging && this.zoomLevel > 1) {
+        const dx = (e.clientX - startX) / this.zoomLevel;
+        const dy = (e.clientY - startY) / this.zoomLevel;
+        this.panX = lastPanX + dx;
+        this.panY = lastPanY + dy;
+        this.applyTransform();
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      modalImage.style.cursor = this.zoomLevel > 1 ? 'grab' : 'default';
+    });
+
+    // Touch events for mobile
+    modalImage.addEventListener('touchstart', (e) => {
+      if (this.zoomLevel > 1 && e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        lastPanX = this.panX;
+        lastPanY = this.panY;
+      }
+    }, { passive: true });
+
+    modalImage.addEventListener('touchmove', (e) => {
+      if (isDragging && this.zoomLevel > 1 && e.touches.length === 1) {
+        const dx = (e.touches[0].clientX - startX) / this.zoomLevel;
+        const dy = (e.touches[0].clientY - startY) / this.zoomLevel;
+        this.panX = lastPanX + dx;
+        this.panY = lastPanY + dy;
+        this.applyTransform();
+      }
+    }, { passive: true });
+
+    modalImage.addEventListener('touchend', () => {
+      isDragging = false;
+    }, { passive: true });
   }
 
   openModal(type) {
