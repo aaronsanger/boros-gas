@@ -85,6 +85,10 @@ const slidesData = [
           <div class="equipment-card">
             <div class="package-header">📦 Paket 1 - J&T JX6910509268</div>
             <div class="package-date">Diterima: 24 Jan 2026, 13:21 WIB</div>
+            <div class="equipment-images">
+              <img src="paket1_tracking.png" alt="J&T Tracking Paket 1" class="evidence-img">
+              <img src="paket1_panci.png" alt="Maxim Neostone Pan" class="evidence-img">
+            </div>
             <div class="product-detail">
               <h4>🍲 Maxim Neostone Sauce Pan 18cm</h4>
               <ul>
@@ -102,6 +106,10 @@ const slidesData = [
           <div class="equipment-card">
             <div class="package-header">📦 Paket 2 - J&T JX6916112531</div>
             <div class="package-date">Diterima: 26 Jan 2026, 23:09 WIB</div>
+            <div class="equipment-images">
+              <img src="paket2_tracking.png" alt="J&T Tracking Paket 2" class="evidence-img">
+              <img src="paket2_teko.png" alt="Teko Stainless Steel" class="evidence-img">
+            </div>
             <div class="product-detail">
               <h4>🫖 Teko Stainless Steel 3 Liter</h4>
               <ul>
