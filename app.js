@@ -87,7 +87,8 @@ class SlidePresentation {
           <strong>Disclaimer:</strong> ${appConfig.disclaimer.text}
           <br><span class="disclaimer-date">Dibuat: ${appConfig.disclaimer.date}</span>
         </div>
-        <button class="log-btn" onclick="presentation.openConversationLog()">📜 Lihat Log Chat</button>
+        <span class="disclaimer-text-mobile">AI Generated</span>
+        <button class="log-btn" onclick="presentation.openConversationLog()">📜 Log</button>
       </div>
     `;
     document.body.appendChild(disclaimer);
