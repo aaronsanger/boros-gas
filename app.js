@@ -87,9 +87,18 @@ class SlidePresentation {
           <strong>Disclaimer:</strong> ${appConfig.disclaimer.text}
           <br><span class="disclaimer-date">Dibuat: ${appConfig.disclaimer.date}</span>
         </div>
+        <button class="log-btn" onclick="presentation.openConversationLog()">📜 Lihat Log Chat</button>
       </div>
     `;
     document.body.appendChild(disclaimer);
+  }
+
+  openConversationLog() {
+    const newWindow = window.open('conversation-log.html', '_blank');
+    if (newWindow) {
+      newWindow.blur();
+      window.focus();
+    }
   }
 
   renderModal() {

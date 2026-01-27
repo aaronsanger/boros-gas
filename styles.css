@@ -1343,6 +1343,44 @@ body {
   opacity: 0.7;
 }
 
+.log-btn {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.log-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+@media (max-width: 768px) {
+  .log-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .disclaimer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .log-btn {
+    margin-top: 0.5rem;
+  }
+}
+
 /* Adjust slide container for disclaimer */
 .slides-container {
   padding-bottom: 60px;
