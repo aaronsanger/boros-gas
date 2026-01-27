@@ -169,6 +169,7 @@ class SlidePresentation {
     document.getElementById('prevBtn').addEventListener('click', () => this.prev());
     document.getElementById('nextBtn').addEventListener('click', () => this.next());
     document.getElementById('fullscreenBtn').addEventListener('click', () => this.toggleFullscreen());
+    document.getElementById('infoBtn').addEventListener('click', () => this.toggleDisclaimer());
     document.addEventListener('keydown', (e) => this.handleKeyboard(e));
 
     // Touch swipe support for mobile
@@ -222,6 +223,13 @@ class SlidePresentation {
     document.getElementById('progressFill').style.width = `${(this.currentSlide / this.totalSlides) * 100}%`;
     document.getElementById('prevBtn').disabled = this.currentSlide === 1;
     document.getElementById('nextBtn').disabled = this.currentSlide === this.totalSlides;
+  }
+
+  toggleDisclaimer() {
+    const disclaimer = document.querySelector('.disclaimer-footer');
+    if (disclaimer) {
+      disclaimer.classList.toggle('show');
+    }
   }
 
   toggleFullscreen() {

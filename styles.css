@@ -96,6 +96,19 @@ body {
   background: var(--bg-hover);
 }
 
+/* Mobile-only button - hidden on desktop */
+.nav-btn.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-btn.mobile-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .nav-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
@@ -1508,10 +1521,57 @@ body {
   }
 }
 
-/* Mobile responsive - HIDE disclaimer on mobile */
-@media (max-width: 480px) {
+/* Mobile/Tablet responsive - HIDE disclaimer by default, show via button */
+@media (max-width: 768px) {
   .disclaimer-footer {
     display: none !important;
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100% - 20px);
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+  }
+
+  .disclaimer-footer.show {
+    display: block !important;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  .disclaimer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .disclaimer-icon {
+    font-size: 1rem;
+  }
+
+  .disclaimer-text {
+    font-size: 0.7rem;
+    width: 100%;
+  }
+
+  .log-btn {
+    margin-top: 0.5rem;
   }
 }
 
