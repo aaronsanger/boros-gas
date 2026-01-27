@@ -83,13 +83,14 @@ const slidesData = [
       <div class="calc-container">
         <div class="calc-formula">
           <h3>🔬 Data Teknis</h3>
-          <p>Konsumsi kompor standar: <strong>150-200 gram/jam</strong></p>
+          <p>Konsumsi kompor standar: <strong>150 gram/jam</strong></p>
           <p>Rata-rata penggunaan: <strong>6.5 menit/hari = 0.108 jam</strong></p>
-          <p>Konsumsi per hari: <strong>~20 gram/hari</strong></p>
+          <p>Konsumsi per hari: <strong>~16 gram/hari</strong></p>
+          <div class="source-ref">📚 Sumber: Kementerian ESDM - Estimasi rata-rata konsumsi LPG rumah tangga</div>
         </div>
         <div class="calc-results">
-          <div class="result-card"><h4>Per Bulan</h4><div class="big-num">600 gram</div><p>= 0.6 kg gas</p></div>
-          <div class="result-card accent"><h4>Daya Tahan 12kg</h4><div class="big-num">20 Bulan</div><p>Jika hanya masak air</p></div>
+          <div class="result-card"><h4>Per Bulan</h4><div class="big-num">480 gram</div><p>= 0.48 kg gas</p></div>
+          <div class="result-card accent"><h4>Daya Tahan 12kg</h4><div class="big-num">25 Bulan</div><p>Jika hanya masak air</p></div>
         </div>
       </div>`
   },
@@ -103,15 +104,16 @@ const slidesData = [
           <div class="gas-image"><img src="bright_gas.png" alt="Bright Gas 12kg"></div>
           <div class="price-section">
             <h3>💰 Harga Bright Gas 12kg (Jan 2026)</h3>
-            <div class="price-range"><span>Rp 190.000</span> → <span>Rp 250.000</span></div>
-            <p class="avg">Rata-rata: <strong>Rp 220.000</strong></p>
+            <div class="price-range"><span>Rp 190.000</span> → <span>Rp 235.000</span></div>
+            <p class="avg">Harga Agen DKI Jakarta: <strong>Rp 192.000</strong></p>
+            <div class="source-ref">📚 Sumber: Pertamina Patra Niaga, Kontan.co.id, CNBC Indonesia</div>
           </div>
         </div>
         <div class="calc-steps">
-          <div class="step"><span class="num">1</span> Harga per kg: Rp 220.000 ÷ 12 = <strong>Rp 18.333/kg</strong></div>
-          <div class="step"><span class="num">2</span> Biaya per bulan (0.6 kg): <strong>Rp 11.000/bulan</strong></div>
+          <div class="step"><span class="num">1</span> Harga per kg: Rp 192.000 ÷ 12 = <strong>Rp 16.000/kg</strong></div>
+          <div class="step"><span class="num">2</span> Biaya per bulan (0.48 kg): <strong>Rp 7.680/bulan</strong></div>
         </div>
-        <div class="final-cost"><div class="badge">Biaya Aktual</div><div class="amount">Rp 11.000</div><div class="period">per bulan untuk memasak air</div></div>
+        <div class="final-cost"><div class="badge">Biaya Aktual</div><div class="amount">Rp 7.680</div><div class="period">per bulan untuk memasak air</div></div>
       </div>`
   },
   {
@@ -121,13 +123,13 @@ const slidesData = [
     content: `
       <div class="proportion-container">
         <div class="chart-visual">
-          <div class="donut-chart"><div class="center"><span class="pct">0.5%</span><span class="lbl">Proporsi Gas</span></div></div>
+          <div class="donut-chart"><div class="center"><span class="pct">0.35%</span><span class="lbl">Proporsi Gas</span></div></div>
         </div>
         <div class="comparison-bars">
           <div class="bar-row"><span class="icon">🏠</span><span class="label">Biaya Kost</span><div class="bar"><div class="fill" style="width:100%"></div></div><span class="val">Rp 2.200.000</span></div>
-          <div class="bar-row"><span class="icon">🔥</span><span class="label">Biaya Gas</span><div class="bar"><div class="fill gas" style="width:0.5%"></div></div><span class="val">Rp 11.000</span></div>
+          <div class="bar-row"><span class="icon">🔥</span><span class="label">Biaya Gas</span><div class="bar"><div class="fill gas" style="width:0.35%"></div></div><span class="val">Rp 7.680</span></div>
         </div>
-        <div class="verdict">🤔 Biaya gas hanya <strong>0.5%</strong> dari total biaya kost. Apakah ini "BOROS"?</div>
+        <div class="verdict">🤔 Biaya gas hanya <strong>0.35%</strong> dari total biaya kost. Apakah ini "BOROS"?</div>
       </div>`
   },
   {
@@ -142,8 +144,8 @@ const slidesData = [
       </div>
       <div class="timeline-summary">
         <div class="sum-card"><span class="icon">📅</span><span class="val">5</span><span class="lbl">Hari</span></div>
-        <div class="sum-card"><span class="icon">🔥</span><span class="val">100 gram</span><span class="lbl">Gas Terpakai</span></div>
-        <div class="sum-card"><span class="icon">💵</span><span class="val">Rp 1.833</span><span class="lbl">Total Biaya</span></div>
+        <div class="sum-card"><span class="icon">🔥</span><span class="val">80 gram</span><span class="lbl">Gas Terpakai</span></div>
+        <div class="sum-card"><span class="icon">💵</span><span class="val">Rp 1.280</span><span class="lbl">Total Biaya</span></div>
       </div>`
   },
   {
@@ -161,7 +163,7 @@ const slidesData = [
         <div class="analysis-card landlord">
           <h3>🏠 Perspektif Pemilik</h3>
           <ul><li>• Menyediakan fasilitas dapur</li><li>• Gas adalah bagian fasilitas</li><li class="quest">? Menganggap penggunaan "boros"</li></ul>
-          <div class="verdict warning">Biaya gas: <strong>Rp 11.000/bulan</strong></div>
+          <div class="verdict warning">Biaya gas: <strong>Rp 7.680/bulan</strong></div>
         </div>
       </div>`
   },
@@ -173,11 +175,11 @@ const slidesData = [
       <div class="scenario">
         <div class="alert">⚠️ <strong>CATATAN:</strong> Berdasarkan iklan, dapur termasuk fasilitas. Ini hanya ilustrasi.</div>
         <table class="calc-table">
-          <tr><td>Biaya gas per bulan</td><td>Rp 11.000</td></tr>
-          <tr><td>Total penggunaan (5 hari)</td><td>Rp 1.833</td></tr>
-          <tr class="total"><td>Total yang "seharusnya" dibayar</td><td class="highlight">Rp 1.833</td></tr>
+          <tr><td>Biaya gas per bulan</td><td>Rp 7.680</td></tr>
+          <tr><td>Total penggunaan (5 hari)</td><td>Rp 1.280</td></tr>
+          <tr class="total"><td>Total yang "seharusnya" dibayar</td><td class="highlight">Rp 1.280</td></tr>
         </table>
-        <div class="perspective"><div class="header">💸 Tambahan per bulan</div><div class="val">Rp 11.000</div><div class="pct">+0.5% dari biaya kost</div></div>
+        <div class="perspective"><div class="header">💸 Tambahan per bulan</div><div class="val">Rp 7.680</div><div class="pct">+0.35% dari biaya kost</div></div>
       </div>`
   },
   {
@@ -194,6 +196,7 @@ const slidesData = [
           <p>Penggunaan harian (10 menit × 2 kali): <strong>166 Wh</strong></p>
           <p>Per bulan: <strong>5 kWh</strong></p>
           <p>Biaya listrik (@ Rp 1.445/kWh): <strong class="highlight">Rp 7.225/bulan</strong></p>
+          <div class="source-ref">📚 Sumber: Tarif PLN Januari 2026 - Golongan R1 1300VA (CNBC Indonesia, Kompas)</div>
         </div>
       </div>`
   },
@@ -205,14 +208,14 @@ const slidesData = [
       <table class="compare-table">
         <thead><tr><th>Aspek</th><th>🔥 Gas</th><th>⚡ Kettle</th></tr></thead>
         <tbody>
-          <tr><td>Biaya/bulan</td><td>Rp 11.000</td><td class="win">Rp 7.225 ✓</td></tr>
+          <tr><td>Biaya/bulan</td><td>Rp 7.680</td><td class="win">Rp 7.225 ✓</td></tr>
           <tr><td>Waktu masak</td><td class="win">5-8 menit ✓</td><td>8-12 menit</td></tr>
           <tr><td>Kapasitas</td><td class="win">5 Liter ✓</td><td>2 Liter</td></tr>
           <tr><td>Keamanan</td><td>Perlu hati-hati</td><td class="win">Auto-off ✓</td></tr>
           <tr><td>Status fasilitas</td><td class="win">Termasuk ✓</td><td>Beli sendiri</td></tr>
         </tbody>
       </table>
-      <div class="recommendation">💡 Electric kettle <strong>hemat 34%</strong> dan <strong>lebih aman</strong></div>`
+      <div class="recommendation">💡 Biaya hampir sama! Electric kettle <strong>sedikit lebih hemat (6%)</strong> dan <strong>lebih aman</strong></div>`
   },
   {
     id: 13,
@@ -223,12 +226,12 @@ const slidesData = [
         <div class="section loss">
           <h3>📉 Jika Anda "Dirugikan"</h3>
           <p>Jika diminta bayar gas padahal sudah termasuk fasilitas:</p>
-          <div class="amount-box loss"><span class="lbl">Kerugian Anda</span><span class="amt">Rp 11.000/bulan</span><span class="total">5 hari baru: Rp 1.833</span></div>
+          <div class="amount-box loss"><span class="lbl">Kerugian Anda</span><span class="amt">Rp 7.680/bulan</span><span class="total">5 hari baru: Rp 1.280</span></div>
         </div>
         <div class="section profit">
           <h3>📈 Keuntungan Pemilik</h3>
           <p>Jika minta bayar gas terpisah dari kost:</p>
-          <div class="amount-box profit"><span class="lbl">Keuntungan Tambahan</span><span class="amt">Rp 11.000/bulan</span><span class="total">5 hari baru: Rp 1.833</span></div>
+          <div class="amount-box profit"><span class="lbl">Keuntungan Tambahan</span><span class="amt">Rp 7.680/bulan</span><span class="total">5 hari baru: Rp 1.280</span></div>
         </div>
       </div>
       <div class="reality">⚖️ <strong>REALITA:</strong> Gas adalah bagian dari fasilitas. Penggunaan Anda wajar.</div>`
@@ -241,7 +244,7 @@ const slidesData = [
       <div class="facts-grid">
         <div class="fact"><span class="num">01</span><h4>3.5+ Tahun Tidak Pakai</h4><p>Kos sejak 17 Juni 2022, baru pakai kompor 23 Januari 2026. <strong>3.5 tahun</strong> tidak pakai dapur!</p></div>
         <div class="fact"><span class="num">02</span><h4>Hanya Masak Air</h4><p>Penggunaan <strong>paling minimal</strong> dari fasilitas dapur.</p></div>
-        <div class="fact"><span class="num">03</span><h4>Perbandingan Nilai</h4><p>Biaya gas Rp 11.000 hanya <strong>0.5%</strong> dari kost Rp 2.2 juta.</p></div>
+        <div class="fact"><span class="num">03</span><h4>Perbandingan Nilai</h4><p>Biaya gas Rp 7.680 hanya <strong>0.35%</strong> dari kost Rp 2.2 juta.</p></div>
         <div class="fact"><span class="num">04</span><h4>Kontribusi Total</h4><p>Dalam 3+ tahun, sudah bayar sekitar <strong>Rp 79.2 juta</strong>!</p></div>
       </div>`
   },
@@ -264,13 +267,13 @@ const slidesData = [
     verdict: 'Penggunaan Gas Anda TIDAK BOROS',
     points: [
       '✅ Fasilitas "Dapur" termasuk dalam iklan kost',
-      '✅ Biaya gas hanya Rp 11.000/bulan (0.5% dari kost)',
+      '✅ Biaya gas hanya Rp 7.680/bulan (0.35% dari kost)',
       '✅ Anda 3.5 tahun TIDAK menggunakan fasilitas dapur',
       '✅ Penggunaan hanya untuk masak air, bukan masak lengkap'
     ],
     footer: {
       contribution: '~Rp 79.2 Juta (3+ tahun)',
-      gasCost: 'Rp 1.833 (5 hari)'
+      gasCost: 'Rp 1.280 (5 hari)'
     }
   }
 ];
