@@ -6,7 +6,7 @@ const slidesData = [
     subtitle: 'Analisis Komprehensif Penggunaan Gas di Kost Ibu Indri, Tanah Abang',
     stats: [
       { value: '17 Juni 2022', label: 'Mulai Kost' },
-      { value: '23 Jan 2026', label: 'Mulai Pakai Kompor' },
+      { value: '24 Jan 2026', label: 'Mulai Pakai Kompor' },
       { value: 'Rp 2.1 - 2.3 Juta', label: 'Biaya Kost/Bulan' }
     ],
     links: {
@@ -57,7 +57,7 @@ const slidesData = [
             </ul>
           </div>
           <div class="verdict-box success">
-            <strong>✅ BUKTI:</strong> Gas masih ada, baru dipakai 5 hari
+            <strong>✅ BUKTI:</strong> Gas masih ada, baru dipakai 4 hari
           </div>
         </div>
       </div>`
@@ -186,14 +186,14 @@ const slidesData = [
     title: 'Timeline Penggunaan Gas',
     content: `
       <div class="timeline">
-        <div class="timeline-item"><div class="date">23 Jan 2026</div><div class="marker start"></div><div class="info"><h4>Mulai Menggunakan Kompor</h4></div></div>
+        <div class="timeline-item"><div class="date">24 Jan 2026</div><div class="marker start"></div><div class="info"><h4>Mulai Menggunakan Kompor</h4></div></div>
         <div class="timeline-line"></div>
-        <div class="timeline-item"><div class="date">28 Jan 2026</div><div class="marker current"></div><div class="info"><h4>Hari Ini</h4><p>Total: <strong>5 hari</strong></p></div></div>
+        <div class="timeline-item"><div class="date">28 Jan 2026</div><div class="marker current"></div><div class="info"><h4>Hari Ini</h4><p>Total: <strong>4 hari</strong></p></div></div>
       </div>
       <div class="timeline-summary">
-        <div class="sum-card"><span class="icon">📅</span><span class="val">5</span><span class="lbl">Hari</span></div>
-        <div class="sum-card"><span class="icon">🔥</span><span class="val">80 gram</span><span class="lbl">Gas Terpakai</span></div>
-        <div class="sum-card"><span class="icon">💵</span><span class="val">Rp 1.280</span><span class="lbl">Total Biaya</span></div>
+        <div class="sum-card"><span class="icon">📅</span><span class="val">4</span><span class="lbl">Hari</span></div>
+        <div class="sum-card"><span class="icon">🔥</span><span class="val">64 gram</span><span class="lbl">Gas Terpakai</span></div>
+        <div class="sum-card"><span class="icon">💵</span><span class="val">Rp 1.024</span><span class="lbl">Total Biaya</span></div>
       </div>`
   },
   {
@@ -224,7 +224,7 @@ const slidesData = [
         <div class="alert">⚠️ <strong>CATATAN:</strong> Berdasarkan iklan, dapur termasuk fasilitas. Ini hanya ilustrasi.</div>
         <table class="calc-table">
           <tr><td>Biaya gas per bulan</td><td>Rp 7.680</td></tr>
-          <tr><td>Total penggunaan (5 hari)</td><td>Rp 1.280</td></tr>
+          <tr><td>Total penggunaan (4 hari)</td><td>Rp 1.024</td></tr>
           <tr class="total"><td>Total yang "seharusnya" dibayar</td><td class="highlight">Rp 1.280</td></tr>
         </table>
         <div class="perspective"><div class="header">💸 Tambahan per bulan</div><div class="val">Rp 7.680</div><div class="pct">+0.35% dari biaya kost</div></div>
@@ -274,7 +274,7 @@ const slidesData = [
         <div class="section loss">
           <h3>📉 Jika Anda "Dirugikan"</h3>
           <p>Jika diminta bayar gas padahal sudah termasuk fasilitas:</p>
-          <div class="amount-box loss"><span class="lbl">Kerugian Anda</span><span class="amt">Rp 7.680/bulan</span><span class="total">5 hari baru: Rp 1.280</span></div>
+          <div class="amount-box loss"><span class="lbl">Kerugian Anda</span><span class="amt">Rp 7.680/bulan</span><span class="total">4 hari baru: Rp 1.024</span></div>
         </div>
         <div class="section profit">
           <h3>📈 Keuntungan Pemilik</h3>
@@ -321,7 +321,7 @@ const slidesData = [
     ],
     footer: {
       contribution: '~Rp 79.2 Juta (3+ tahun)',
-      gasCost: 'Rp 1.280 (5 hari)'
+      gasCost: 'Rp 1.024 (4 hari)'
     }
   }
 ];
