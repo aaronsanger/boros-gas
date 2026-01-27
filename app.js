@@ -9,6 +9,7 @@ class SlidePresentation {
   init() {
     this.renderSlides();
     this.renderDisclaimer();
+    this.renderModal();
     this.bindEvents();
     this.updateUI();
   }
@@ -27,8 +28,8 @@ class SlidePresentation {
   createTitleSlide(slide) {
     const linksHtml = slide.links ? `
       <div class="title-links">
-        <a href="${slide.links.mamikos}" target="_blank" class="ext-link mamikos">🏠 Mamikos</a>
-        <a href="${slide.links.maps}" target="_blank" class="ext-link maps">📍 Maps</a>
+        <button class="ext-link mamikos" onclick="presentation.openModal('mamikos')">🏠 Mamikos</button>
+        <button class="ext-link maps" onclick="presentation.openModal('maps')">📍 Maps</button>
       </div>
     ` : '';
 
@@ -69,8 +70,8 @@ class SlidePresentation {
             <div class="stat"><span class="lbl">Biaya Gas Total</span><span class="val">${slide.footer.gasCost}</span></div>
           </div>
           <div class="external-links conclusion-links">
-            <a href="${appConfig.links.mamikos}" target="_blank" class="ext-link mamikos">🏠 Lihat Kost di Mamikos</a>
-            <a href="${appConfig.links.maps}" target="_blank" class="ext-link maps">📍 Lihat di Google Maps</a>
+            <button class="ext-link mamikos" onclick="presentation.openModal('mamikos')">🏠 Lihat Kost di Mamikos</button>
+            <button class="ext-link maps" onclick="presentation.openModal('maps')">📍 Lihat di Google Maps</button>
           </div>
         </div>
       </section>`;
@@ -89,6 +90,69 @@ class SlidePresentation {
       </div>
     `;
     document.body.appendChild(disclaimer);
+  }
+
+  renderModal() {
+    const modal = document.createElement('div');
+    modal.id = 'linkModal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-overlay" onclick="presentation.closeModal()"></div>
+      <div class="modal-content">
+        <button class="modal-close" onclick="presentation.closeModal()">✕</button>
+        <div class="modal-icon" id="modalIcon"></div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="modal-link-preview" id="modalLinkPreview"></div>
+        <div class="modal-actions">
+          <button class="modal-btn secondary" onclick="presentation.closeModal()">Tutup</button>
+          <button class="modal-btn primary" id="modalDetailBtn">Lihat Detail →</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  openModal(type) {
+    const modal = document.getElementById('linkModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalLinkPreview = document.getElementById('modalLinkPreview');
+    const modalDetailBtn = document.getElementById('modalDetailBtn');
+
+    if (type === 'mamikos') {
+      modalIcon.textContent = '🏠';
+      modalTitle.textContent = 'Kost Ibu Indri - Mamikos';
+      modalDescription.textContent = 'Lihat detail kost termasuk fasilitas, harga, dan ulasan di Mamikos.';
+      modalLinkPreview.textContent = 'mamikos.com/room/kost-ibu-indri...';
+      modalDetailBtn.onclick = () => this.openInBackground(appConfig.links.mamikos);
+    } else if (type === 'maps') {
+      modalIcon.textContent = '📍';
+      modalTitle.textContent = 'Lokasi Kost - Google Maps';
+      modalDescription.textContent = 'Lihat lokasi kost di Jl. Kebon Kacang 9 No. 25, Tanah Abang, Jakarta Pusat.';
+      modalLinkPreview.textContent = 'maps.app.goo.gl/tHHWPeTJRM75GG6h7';
+      modalDetailBtn.onclick = () => this.openInBackground(appConfig.links.maps);
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeModal() {
+    const modal = document.getElementById('linkModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openInBackground(url) {
+    // Open link in background tab
+    const newWindow = window.open(url, '_blank');
+    if (newWindow) {
+      newWindow.blur();
+      window.focus();
+    }
+    this.closeModal();
   }
 
   bindEvents() {
@@ -124,6 +188,7 @@ class SlidePresentation {
     if (e.key === 'ArrowRight' || e.key === ' ') this.next();
     if (e.key === 'ArrowLeft') this.prev();
     if (e.key === 'f' || e.key === 'F') this.toggleFullscreen();
+    if (e.key === 'Escape') this.closeModal();
   }
 
   showSlide(n) {
@@ -158,4 +223,7 @@ class SlidePresentation {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+let presentation;
+document.addEventListener('DOMContentLoaded', () => {
+  presentation = new SlidePresentation();
+});
