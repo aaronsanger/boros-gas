@@ -121,6 +121,78 @@ class SlidePresentation {
       </div>
     `;
     document.body.appendChild(modal);
+
+    // Render Image Modal
+    this.renderImageModal();
+  }
+
+  renderImageModal() {
+    const imageModal = document.createElement('div');
+    imageModal.id = 'imageModal';
+    imageModal.className = 'image-modal';
+    imageModal.innerHTML = `
+      <div class="image-modal-overlay" onclick="presentation.closeImageModal()"></div>
+      <div class="image-modal-content">
+        <button class="image-modal-close" onclick="presentation.closeImageModal()">✕</button>
+        <div class="image-modal-container">
+          <img src="" alt="" id="modalImage" class="modal-image">
+        </div>
+        <div class="image-modal-controls">
+          <button class="zoom-btn" onclick="presentation.zoomOut()">➖</button>
+          <button class="zoom-btn reset" onclick="presentation.zoomReset()">🔄</button>
+          <button class="zoom-btn" onclick="presentation.zoomIn()">➕</button>
+        </div>
+        <div class="image-modal-caption" id="modalCaption"></div>
+      </div>
+    `;
+    document.body.appendChild(imageModal);
+    this.zoomLevel = 1;
+  }
+
+  openImageModal(src, alt) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+
+    modalImage.src = src;
+    modalImage.alt = alt;
+    modalCaption.textContent = alt;
+    this.zoomLevel = 1;
+    modalImage.style.transform = `scale(1)`;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    this.zoomLevel = 1;
+  }
+
+  zoomIn() {
+    if (this.zoomLevel < 3) {
+      this.zoomLevel += 0.5;
+      this.applyZoom();
+    }
+  }
+
+  zoomOut() {
+    if (this.zoomLevel > 0.5) {
+      this.zoomLevel -= 0.5;
+      this.applyZoom();
+    }
+  }
+
+  zoomReset() {
+    this.zoomLevel = 1;
+    this.applyZoom();
+  }
+
+  applyZoom() {
+    const modalImage = document.getElementById('modalImage');
+    modalImage.style.transform = `scale(${this.zoomLevel})`;
   }
 
   openModal(type) {
@@ -184,6 +256,23 @@ class SlidePresentation {
       touchEndX = e.changedTouches[0].screenX;
       this.handleSwipe(touchStartX, touchEndX);
     }, { passive: true });
+
+    // Event delegation for evidence images
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('evidence-img')) {
+        this.openImageModal(e.target.src, e.target.alt);
+      }
+    });
+
+    // Close image modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const imageModal = document.getElementById('imageModal');
+        if (imageModal && imageModal.classList.contains('active')) {
+          this.closeImageModal();
+        }
+      }
+    });
   }
 
   handleSwipe(startX, endX) {
