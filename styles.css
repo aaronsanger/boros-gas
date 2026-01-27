@@ -2549,8 +2549,13 @@ button.ext-link {
   overflow-y: auto;
 }
 
+/* IMPORTANT: Only active slide gets display:flex in fullscreen */
 :fullscreen .slide {
+  display: none;
   min-height: calc(100vh - 65px);
+}
+
+:fullscreen .slide.active {
   display: flex;
   align-items: center;
   justify-content: center;
