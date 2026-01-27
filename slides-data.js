@@ -70,7 +70,7 @@ const slidesData = [
       <div class="usage-grid">
         <div class="usage-card"><div class="usage-icon">🌙</div><h3>Waktu</h3><p class="value">Setiap Malam</p></div>
         <div class="usage-card"><div class="usage-icon">💧</div><h3>Volume</h3><p class="value">3 - 5 Liter</p></div>
-        <div class="usage-card"><div class="usage-icon">🍲</div><h3>Peralatan</h3><p class="value">2 Panci (3L + 2L)</p></div>
+        <div class="usage-card"><div class="usage-icon">🍲</div><h3>Peralatan</h3><p class="value">Panci 2.3L + Teko 3L</p></div>
         <div class="usage-card"><div class="usage-icon">⏱️</div><h3>Durasi</h3><p class="value">5 - 8 Menit</p></div>
       </div>
       <div class="summary-box">📝 Memasak air 1x sehari di malam hari adalah <strong>penggunaan wajar</strong></div>`
@@ -78,6 +78,54 @@ const slidesData = [
   {
     id: 5,
     number: '04',
+    title: 'Detail Peralatan yang Dibeli',
+    content: `
+      <div class="equipment-section">
+        <div class="equipment-grid">
+          <div class="equipment-card">
+            <div class="package-header">📦 Paket 1 - J&T JX6910509268</div>
+            <div class="package-date">Diterima: 24 Jan 2026, 13:21 WIB</div>
+            <div class="product-detail">
+              <h4>🍲 Maxim Neostone Sauce Pan 18cm</h4>
+              <ul>
+                <li>Diameter: 18cm | Tinggi: 9cm</li>
+                <li>Bahan: Ceramic Marble</li>
+                <li>Merek: Maxim</li>
+              </ul>
+              <div class="volume-calc">
+                <strong>📐 Kalkulasi Volume:</strong><br>
+                V = π × r² × h = 3.14 × 9² × 9<br>
+                <span class="result">≈ 2.3 Liter</span>
+              </div>
+            </div>
+          </div>
+          <div class="equipment-card">
+            <div class="package-header">📦 Paket 2 - J&T JX6916112531</div>
+            <div class="package-date">Diterima: 26 Jan 2026, 23:09 WIB</div>
+            <div class="product-detail">
+              <h4>🫖 Teko Stainless Steel 3 Liter</h4>
+              <ul>
+                <li>Kapasitas: 3 Liter</li>
+                <li>Bahan: Stainless Steel</li>
+                <li>Berat: 850 gram</li>
+              </ul>
+              <div class="volume-calc">
+                <strong>📐 Kapasitas:</strong><br>
+                <span class="result">3 Liter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="total-capacity">
+          <span class="label">Total Kapasitas:</span>
+          <span class="value">2.3L + 3L = <strong>5.3 Liter</strong></span>
+        </div>
+        <div class="source-ref">📚 Sumber: Detail produk dari Marketplace + Resi pengiriman J&T Express</div>
+      </div>`
+  },
+  {
+    id: 6,
+    number: '05',
     title: 'Perhitungan Konsumsi Gas',
     content: `
       <div class="calc-container">
@@ -95,8 +143,8 @@ const slidesData = [
       </div>`
   },
   {
-    id: 6,
-    number: '05',
+    id: 7,
+    number: '06',
     title: 'Estimasi Biaya Gas',
     content: `
       <div class="cost-container">
