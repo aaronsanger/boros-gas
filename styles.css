@@ -1508,44 +1508,10 @@ body {
   }
 }
 
-/* Mobile responsive - ultra compact floating pill */
+/* Mobile responsive - HIDE disclaimer on mobile */
 @media (max-width: 480px) {
   .disclaimer-footer {
-    position: fixed;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    width: auto;
-    max-width: calc(100% - 16px);
-    padding: 0.4rem 0.75rem;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .disclaimer-content {
-    gap: 0.5rem;
-    font-size: 0.6rem;
-    flex-wrap: nowrap;
-  }
-
-  .disclaimer-icon {
-    font-size: 0.85rem;
-  }
-
-  .disclaimer-text {
-    display: none;
-  }
-
-  .disclaimer-text-mobile {
-    display: block;
-    white-space: nowrap;
-  }
-
-  .log-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.55rem;
+    display: none !important;
   }
 }
 

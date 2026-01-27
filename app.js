@@ -225,10 +225,33 @@ class SlidePresentation {
   }
 
   toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
+    const elem = document.documentElement;
+    const isFullscreen = document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement;
+
+    if (!isFullscreen) {
+      // Try standard first, then fallbacks
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { // Safari/iOS
+        elem.webkitRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+      } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+      }
     } else {
-      document.exitFullscreen();
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { // Safari/iOS
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+      }
     }
   }
 }
