@@ -272,6 +272,12 @@ body {
   height: auto;
   max-height: 500px;
   object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.facility-image:hover {
+  transform: scale(1.02);
 }
 
 .highlight-card {
@@ -2515,5 +2521,173 @@ button.ext-link {
   /* Status Image */
   .status-image {
     max-height: 150px;
+  }
+}
+
+/* ================================================================
+   FULLSCREEN MODE STYLES
+   These styles apply when user enters fullscreen mode
+   ================================================================ */
+:fullscreen {
+  background: var(--bg);
+}
+
+:fullscreen .nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  height: 50px;
+  z-index: 1000;
+}
+
+:fullscreen .slides-container {
+  padding-top: 55px;
+  padding-bottom: 10px;
+  height: calc(100vh - 55px);
+  overflow-y: auto;
+}
+
+:fullscreen .slide {
+  min-height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:fullscreen .slide-content {
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
+/* Hide disclaimer in fullscreen by default on mobile/tablet */
+@media (max-width: 768px) {
+  :fullscreen .disclaimer-footer {
+    display: none !important;
+  }
+
+  :fullscreen .disclaimer-footer.show {
+    display: block !important;
+  }
+}
+
+/* ================================================================
+   LANDSCAPE MODE STYLES (Mobile rotated)
+   ================================================================ */
+@media (orientation: landscape) and (max-height: 500px) {
+  .nav-container {
+    height: 44px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .nav-brand span:last-child {
+    display: none;
+  }
+
+  .nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .slides-container {
+    padding-top: 48px;
+    padding-bottom: 5px;
+  }
+
+  .slide {
+    min-height: calc(100vh - 53px);
+  }
+
+  .slide-content {
+    padding: 0.75rem;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .slide-header h2 {
+    font-size: 1.1rem;
+  }
+
+  /* Compact cards in landscape */
+  .stat-card,
+  .calc-item,
+  .equipment-card {
+    padding: 0.5rem;
+  }
+
+  .gas-cards,
+  .stat-grid,
+  .equipment-grid {
+    gap: 0.5rem;
+  }
+
+  /* Title slide in landscape */
+  .title-slide {
+    padding: 0.75rem;
+  }
+
+  .main-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .title-stats {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .title-stats .stat {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .title-stats .val {
+    font-size: 0.85rem;
+  }
+
+  /* Hide disclaimer in landscape */
+  .disclaimer-footer {
+    display: none !important;
+  }
+
+  .disclaimer-footer.show {
+    display: block !important;
+    bottom: 5px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Fullscreen + Landscape combined */
+@media (orientation: landscape) and (max-height: 500px) {
+  :fullscreen .nav-container {
+    height: 40px;
+  }
+
+  :fullscreen .slides-container {
+    padding-top: 44px;
+    height: calc(100vh - 44px);
+  }
+
+  :fullscreen .slide {
+    min-height: calc(100vh - 50px);
+  }
+
+  :fullscreen .slide-content {
+    max-height: calc(100vh - 55px);
+    padding: 0.5rem 1rem;
   }
 }

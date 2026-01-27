@@ -331,10 +331,16 @@ class SlidePresentation {
       this.handleSwipe(touchStartX, touchEndX);
     }, { passive: true });
 
-    // Event delegation for evidence images
+    // Event delegation for ALL images in slides (zoomable)
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('evidence-img')) {
-        this.openImageModal(e.target.src, e.target.alt);
+      const target = e.target;
+      // Check if clicked element is an image inside slide content
+      if (target.tagName === 'IMG' &&
+        (target.classList.contains('evidence-img') ||
+          target.classList.contains('facility-image') ||
+          target.classList.contains('gas-indicator-image') ||
+          target.closest('.slide-content'))) {
+        this.openImageModal(target.src, target.alt || 'Gambar');
       }
     });
 
