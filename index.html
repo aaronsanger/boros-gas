@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Penggunaan Gas - Kost Ibu Indri</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-brand"><span class="brand-icon">🔥</span><span>Gas Analysis</span></div>
+        <div class="nav-progress">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <span id="slideCounter">1 / 15</span>
+        </div>
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn">◀</button>
+            <button class="nav-btn" id="nextBtn">▶</button>
+            <button class="nav-btn" id="fullscreenBtn">⛶</button>
+        </div>
+    </nav>
+
+    <main class="slides-container" id="slidesContainer"></main>
+
+    <script src="slides-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
