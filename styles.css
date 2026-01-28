@@ -1841,6 +1841,172 @@ body {
   }
 }
 
+/* ================================================================
+   ELECTRIC KETTLE SECTION STYLES
+   ================================================================ */
+.kettle-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.product-box {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border: 2px solid #f59e0b;
+}
+
+.product-box .icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-box h3 {
+  font-size: 1.4rem;
+  color: #92400e;
+  margin-bottom: 1rem;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.specs-grid .spec {
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.specs-grid .spec .label {
+  font-size: 0.7rem;
+  color: #78716c;
+  text-transform: uppercase;
+}
+
+.specs-grid .spec .value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1c1917;
+}
+
+.kettle-calc {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.kettle-calc h4 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+/* Comparison Section */
+.compare-section {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.compare-section h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.compare-summary {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: #dcfce7;
+  border: 2px solid #22c55e;
+}
+
+.summary-card .icon {
+  font-size: 2rem;
+}
+
+.summary-card .text {
+  font-size: 1.1rem;
+  color: #166534;
+}
+
+.summary-card.win {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.summary-note {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  color: #92400e;
+  font-size: 0.95rem;
+}
+
+/* Mobile adjustments for kettle section */
+@media (max-width: 768px) {
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-box {
+    padding: 1rem;
+  }
+
+  .product-box .icon {
+    font-size: 2.5rem;
+  }
+
+  .product-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .summary-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .summary-card .text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .specs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .specs-grid .spec {
+    padding: 0.5rem;
+  }
+
+  .specs-grid .spec .label {
+    font-size: 0.6rem;
+  }
+
+  .specs-grid .spec .value {
+    font-size: 0.8rem;
+  }
+}
 
 .ext-link.maps:hover {
   background: #3367d6;

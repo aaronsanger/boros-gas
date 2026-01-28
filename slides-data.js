@@ -241,37 +241,64 @@ const slidesData = [
   {
     id: 11,
     number: '10',
-    title: 'Alternatif: Electric Kettle',
+    title: 'Alternatif: Ketel Listrik',
     content: `
       <div class="kettle-section">
-        <div class="product"><div class="icon">⚡🫖</div><h3>Electric Kettle 500W</h3>
-          <div class="specs"><span>Daya: 500W</span><span>Kapasitas: 1.5-2L</span><span>Waktu: 8-12 menit</span></div>
+        <div class="product-box">
+          <div class="icon">⚡🫖</div>
+          <h3>Ketel Listrik 500W</h3>
+          <div class="specs-grid">
+            <div class="spec"><span class="label">Daya</span><span class="value">500W</span></div>
+            <div class="spec"><span class="label">Kapasitas</span><span class="value">2 Liter</span></div>
+            <div class="spec"><span class="label">Waktu Panas</span><span class="value">4-6 menit</span></div>
+            <div class="spec"><span class="label">Bahan</span><span class="value">Stainless Steel</span></div>
+            <div class="spec"><span class="label">Fitur</span><span class="value">Auto-off, Anti-kering</span></div>
+            <div class="spec"><span class="label">Tegangan</span><span class="value">220V/50Hz</span></div>
+          </div>
         </div>
         <div class="kettle-calc">
-          <h4>Perhitungan Biaya Listrik</h4>
-          <p>Penggunaan harian (10 menit × 2 kali): <strong>166 Wh</strong></p>
-          <p>Per bulan: <strong>5 kWh</strong></p>
-          <p>Biaya listrik (@ Rp 1.445/kWh): <strong class="highlight">Rp 7.225/bulan</strong></p>
-          <div class="source-ref">📚 Sumber: Tarif PLN Januari 2026 - Golongan R1 1300VA (CNBC Indonesia, Kompas)</div>
+          <h4>📊 Perhitungan Biaya Listrik</h4>
+          <table class="calc-table">
+            <tr><td>Daya ketel</td><td>500W = 0.5 kWh</td></tr>
+            <tr><td>Waktu per pemanasan</td><td>5 menit = 0.083 jam</td></tr>
+            <tr><td>Konsumsi per pakai</td><td>0.5 × 0.083 = <strong>0.042 kWh</strong></td></tr>
+            <tr><td>Per hari (1× pakai)</td><td>0.042 kWh</td></tr>
+            <tr><td>Per bulan (30 hari)</td><td>1.25 kWh</td></tr>
+            <tr class="total"><td>Biaya/bulan (@ Rp 1.445/kWh)</td><td class="highlight">Rp 1.806</td></tr>
+          </table>
+          <div class="source-ref">📚 Sumber: Tarif PLN Januari 2026 - Golongan R1 1300VA</div>
         </div>
       </div>`
   },
   {
     id: 12,
     number: '11',
-    title: 'Gas vs Electric Kettle',
+    title: 'Kompor Gas vs Ketel Listrik',
     content: `
-      <table class="compare-table">
-        <thead><tr><th>Aspek</th><th>🔥 Gas</th><th>⚡ Kettle</th></tr></thead>
-        <tbody>
-          <tr><td>Biaya/bulan</td><td>Rp 7.680</td><td class="win">Rp 7.225 ✓</td></tr>
-          <tr><td>Waktu masak</td><td class="win">5-8 menit ✓</td><td>8-12 menit</td></tr>
-          <tr><td>Kapasitas</td><td class="win">5 Liter ✓</td><td>2 Liter</td></tr>
-          <tr><td>Keamanan</td><td>Perlu hati-hati</td><td class="win">Auto-off ✓</td></tr>
-          <tr><td>Status fasilitas</td><td class="win">Termasuk ✓</td><td>Beli sendiri</td></tr>
-        </tbody>
-      </table>
-      <div class="recommendation">💡 Biaya hampir sama! Electric kettle <strong>sedikit lebih hemat (6%)</strong> dan <strong>lebih aman</strong></div>`
+      <div class="compare-section">
+        <h3>⚖️ Perbandingan Biaya Memasak Air 2L</h3>
+        <table class="compare-table">
+          <thead><tr><th>Aspek</th><th>🔥 Kompor Gas</th><th>⚡ Ketel Listrik</th></tr></thead>
+          <tbody>
+            <tr><td>Biaya per sekali pakai</td><td>Rp 27</td><td class="win">Rp 60 ✗</td></tr>
+            <tr><td>Biaya/bulan (1×/hari)</td><td>Rp 7.680</td><td class="win">Rp 1.806 ✓</td></tr>
+            <tr><td>Waktu masak 2L</td><td>5-8 menit</td><td class="win">4-6 menit ✓</td></tr>
+            <tr><td>Kapasitas maksimal</td><td class="win">5+ Liter ✓</td><td>2 Liter</td></tr>
+            <tr><td>Keamanan</td><td>Perlu hati-hati</td><td class="win">Auto-off ✓</td></tr>
+            <tr><td>Fitur tambahan</td><td>-</td><td class="win">Anti-kering ✓</td></tr>
+            <tr><td>Status di kost</td><td class="win">Termasuk fasilitas ✓</td><td>Beli sendiri</td></tr>
+          </tbody>
+        </table>
+        <div class="compare-summary">
+          <div class="summary-card win">
+            <span class="icon">⚡</span>
+            <span class="text">Ketel listrik <strong>77% lebih hemat</strong> per bulan!</span>
+          </div>
+          <div class="summary-note">
+            💡 Tapi di kost, gas sudah termasuk fasilitas. Jadi tidak perlu beli ketel listrik.
+          </div>
+        </div>
+      </div>`
   },
   {
     id: 13,
