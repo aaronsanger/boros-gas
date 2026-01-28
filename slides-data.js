@@ -276,26 +276,47 @@ const slidesData = [
     title: 'Kompor Gas vs Ketel Listrik',
     content: `
       <div class="compare-section">
-        <h3>⚖️ Perbandingan Biaya Memasak Air 2L</h3>
-        <table class="compare-table">
-          <thead><tr><th>Aspek</th><th>🔥 Kompor Gas</th><th>⚡ Ketel Listrik</th></tr></thead>
+        <h3>⚖️ Perbandingan Biaya per Volume Air</h3>
+        <div class="volume-tabs">
+          <p class="note">Ketel 2L perlu beberapa kali panaskan untuk volume besar:</p>
+        </div>
+        <table class="compare-table volume-compare">
+          <thead>
+            <tr>
+              <th>Volume</th>
+              <th>🔥 Gas<br><small>1× masak</small></th>
+              <th>⚡ Ketel 2L<br><small>berapa kali?</small></th>
+              <th>Pemenang</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Biaya per sekali pakai</td><td>Rp 27</td><td class="win">Rp 60 ✗</td></tr>
-            <tr><td>Biaya/bulan (1×/hari)</td><td>Rp 7.680</td><td class="win">Rp 1.806 ✓</td></tr>
-            <tr><td>Waktu masak 2L</td><td>5-8 menit</td><td class="win">4-6 menit ✓</td></tr>
-            <tr><td>Kapasitas maksimal</td><td class="win">5+ Liter ✓</td><td>2 Liter</td></tr>
-            <tr><td>Keamanan</td><td>Perlu hati-hati</td><td class="win">Auto-off ✓</td></tr>
-            <tr><td>Fitur tambahan</td><td>-</td><td class="win">Anti-kering ✓</td></tr>
-            <tr><td>Status di kost</td><td class="win">Termasuk fasilitas ✓</td><td>Beli sendiri</td></tr>
+            <tr>
+              <td><strong>2 Liter</strong></td>
+              <td>Rp 27<br><small>5-8 min</small></td>
+              <td>Rp 60<br><small>1× (5 min)</small></td>
+              <td class="win-gas">🔥 Gas</td>
+            </tr>
+            <tr>
+              <td><strong>3 Liter</strong></td>
+              <td>Rp 40<br><small>7-10 min</small></td>
+              <td>Rp 90<br><small>2× (10 min)</small></td>
+              <td class="win-gas">🔥 Gas</td>
+            </tr>
+            <tr>
+              <td><strong>5 Liter</strong><br><small>(mandi)</small></td>
+              <td>Rp 80<br><small>12-15 min</small></td>
+              <td>Rp 150<br><small>3× (15 min)</small></td>
+              <td class="win-gas">🔥 Gas</td>
+            </tr>
           </tbody>
         </table>
         <div class="compare-summary">
-          <div class="summary-card win">
-            <span class="icon">⚡</span>
-            <span class="text">Ketel listrik <strong>77% lebih hemat</strong> per bulan!</span>
+          <div class="summary-card gas-win">
+            <span class="icon">🔥</span>
+            <span class="text"><strong>Gas lebih hemat</strong> untuk volume besar karena ketel harus panaskan berulang!</span>
           </div>
           <div class="summary-note">
-            💡 Tapi di kost, gas sudah termasuk fasilitas. Jadi tidak perlu beli ketel listrik.
+            💡 Di kost ini, gas sudah termasuk fasilitas. Kompor gas adalah pilihan paling efisien.
           </div>
         </div>
       </div>`

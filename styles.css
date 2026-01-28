@@ -1950,6 +1950,15 @@ body {
   background: linear-gradient(135deg, #dcfce7, #bbf7d0);
 }
 
+.summary-card.gas-win {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+}
+
+.summary-card.gas-win .text {
+  color: #92400e;
+}
+
 .summary-note {
   background: #fef3c7;
   border: 1px solid #f59e0b;
@@ -1958,6 +1967,41 @@ body {
   text-align: center;
   color: #92400e;
   font-size: 0.95rem;
+}
+
+/* Volume comparison table */
+.volume-tabs {
+  margin-bottom: 1rem;
+}
+
+.volume-tabs .note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.volume-compare {
+  width: 100%;
+}
+
+.volume-compare th,
+.volume-compare td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.volume-compare small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.win-gas {
+  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+  color: #92400e !important;
+  font-weight: 600;
 }
 
 /* Mobile adjustments for kettle section */
@@ -1987,6 +2031,21 @@ body {
   .summary-card .text {
     font-size: 1rem;
   }
+
+  /* Volume comparison table mobile */
+  .volume-compare th,
+  .volume-compare td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.85rem;
+  }
+
+  .volume-compare small {
+    font-size: 0.65rem;
+  }
+
+  .compare-section h3 {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2004,6 +2063,85 @@ body {
   }
 
   .specs-grid .spec .value {
+    font-size: 0.8rem;
+  }
+
+  /* Full width table on small screens */
+  .volume-compare {
+    font-size: 0.8rem;
+  }
+
+  .volume-compare th,
+  .volume-compare td {
+    padding: 0.4rem 0.2rem;
+  }
+
+  .volume-compare th:first-child,
+  .volume-compare td:first-child {
+    min-width: 60px;
+  }
+
+  .win-gas {
+    font-size: 0.75rem;
+    padding: 0.3rem !important;
+  }
+
+  .compare-summary {
+    gap: 0.75rem;
+  }
+
+  .summary-card {
+    padding: 0.75rem;
+  }
+
+  .summary-card .icon {
+    font-size: 1.5rem;
+  }
+
+  .summary-note {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .kettle-section,
+  .compare-section {
+    max-width: 90%;
+  }
+
+  .product-box {
+    padding: 0.75rem;
+  }
+
+  .product-box .icon {
+    font-size: 2rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .specs-grid .spec {
+    padding: 0.4rem;
+  }
+
+  .volume-compare th,
+  .volume-compare td {
+    padding: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .summary-card {
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+  }
+
+  .summary-note {
+    padding: 0.5rem;
     font-size: 0.8rem;
   }
 }
