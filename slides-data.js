@@ -273,86 +273,92 @@ const slidesData = [
   {
     id: 12,
     number: '11',
-    title: 'Kalkulator: Gas vs Listrik',
+    title: 'Perbandingan: Gas vs Ketel Listrik',
     content: `
-      <div class="calculator-section">
-        <h3>🧮 Kalkulator Biaya - Sesuaikan Tarif Anda</h3>
+      <div class="comparison-full">
+        <h3>⚖️ Perbandingan Lengkap untuk Kebutuhan 5 Liter</h3>
         
-        <div class="calc-inputs">
-          <div class="input-group gas-input">
-            <label>🔥 Harga Gas LPG 12kg</label>
-            <div class="input-wrapper">
-              <span class="prefix">Rp</span>
-              <input type="number" id="gasPrice" value="235000" min="100000" max="300000" step="1000">
+        <div class="compare-grid">
+          <div class="compare-card gas-card">
+            <div class="card-header">🔥 Kompor Gas (2 Tungku)</div>
+            <div class="card-content">
+              <div class="time-box">
+                <span class="time-value">5-10</span>
+                <span class="time-unit">menit</span>
+              </div>
+              <ul class="pros-list">
+                <li class="pro">✓ Panci 2.3L + Teko 3L sekaligus</li>
+                <li class="pro">✓ Semua air panas bersamaan</li>
+                <li class="pro">✓ 1× operasi saja</li>
+                <li class="pro">✓ Tidak perlu bolak-balik</li>
+              </ul>
             </div>
-            <small>Per kg: <span id="gasPricePerKg">Rp 19.583</span> | Per gram: <span id="gasPricePerGram">Rp 19.6</span></small>
           </div>
-          <div class="input-group electric-input">
-            <label>⚡ Tarif Listrik PLN</label>
-            <div class="input-wrapper">
-              <span class="prefix">Rp</span>
-              <input type="number" id="electricRate" value="1699" min="500" max="3000" step="1">
-              <span class="suffix">/kWh</span>
+          
+          <div class="vs-badge">VS</div>
+          
+          <div class="compare-card kettle-card">
+            <div class="card-header">⚡ Ketel Listrik 2L</div>
+            <div class="card-content">
+              <div class="time-box warning">
+                <span class="time-value">15-20</span>
+                <span class="time-unit">menit</span>
+              </div>
+              <ul class="cons-list">
+                <li class="con">✗ Perlu 3× putaran untuk 5L</li>
+                <li class="con">✗ Air putaran 1 sudah DINGIN</li>
+                <li class="con">✗ Harus bolak-balik tuang</li>
+                <li class="con">✗ Tidak praktis untuk mandi</li>
+              </ul>
             </div>
-            <small>Golongan R1 2200VA+ (tertinggi)</small>
           </div>
         </div>
 
-        <div class="calc-results-table">
-          <table class="compare-table dynamic-compare">
+        <div class="time-comparison">
+          <h4>⏱️ Perbandingan Waktu & Praktis</h4>
+          <table class="compare-table time-table">
             <thead>
               <tr>
                 <th>Volume</th>
-                <th>🔥 Gas<br><small>1× masak</small></th>
-                <th>⚡ Ketel 2L<br><small>berapa kali?</small></th>
-                <th>Hemat</th>
+                <th>🔥 Gas (2 Tungku)</th>
+                <th>⚡ Ketel (2L)</th>
+                <th>Masalah Ketel</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>2 Liter</strong></td>
-                <td id="gas2L">Rp 157</td>
-                <td id="kettle2L">Rp 71<br><small>1× (5 min)</small></td>
-                <td id="winner2L" class="winner-cell">⚡ -55%</td>
+                <td class="win-gas">5 min ✓</td>
+                <td>5 min (1×)</td>
+                <td>-</td>
               </tr>
               <tr>
                 <td><strong>3 Liter</strong></td>
-                <td id="gas3L">Rp 196</td>
-                <td id="kettle3L">Rp 142<br><small>2× (10 min)</small></td>
-                <td id="winner3L" class="winner-cell">⚡ -28%</td>
+                <td class="win-gas">7 min ✓</td>
+                <td>10 min (2×)</td>
+                <td>⚠️ Batch 1 mulai dingin</td>
               </tr>
               <tr>
-                <td><strong>5 Liter</strong><br><small>(mandi)</small></td>
-                <td id="gas5L">Rp 294</td>
-                <td id="kettle5L">Rp 213<br><small>3× (15 min)</small></td>
-                <td id="winner5L" class="winner-cell">⚡ -28%</td>
+                <td><strong>5 Liter</strong></td>
+                <td class="win-gas">10 min ✓</td>
+                <td>15 min (3×)</td>
+                <td>❌ Batch 1 sudah dingin!</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="monthly-summary">
-          <h4>📅 Estimasi Biaya Bulanan (30 hari × 5L/hari)</h4>
-          <div class="monthly-cards">
-            <div class="monthly-card gas">
-              <span class="icon">🔥</span>
-              <span class="label">Gas</span>
-              <span class="amount" id="gasMonthly">Rp 8.820</span>
-            </div>
-            <div class="monthly-card electric">
-              <span class="icon">⚡</span>
-              <span class="label">Listrik</span>
-              <span class="amount" id="electricMonthly">Rp 6.372</span>
-            </div>
-          </div>
-          <div id="calcConclusion" class="calc-conclusion">
-            ⚡ Ketel listrik lebih hemat <strong>Rp 2.448/bulan</strong> (28%)
+        <div class="winner-box gas-winner-box">
+          <span class="winner-icon">🏆</span>
+          <div class="winner-text">
+            <strong>Gas dengan 2 Tungku MENANG!</strong>
+            <p>Lebih cepat, lebih praktis, semua air panas bersamaan.</p>
           </div>
         </div>
 
-        <div class="calc-note">
-          💡 <strong>Catatan:</strong> Ketel listrik lebih hemat per Rupiah, tapi perlu 3× bolak-balik untuk 5L. 
-          Gas dengan 2 tungku bisa panaskan 5L sekaligus dalam 1× operasi.
+        <div class="calc-note warning-note">
+          ⚠️ <strong>Masalah Ketel untuk Mandi:</strong> Saat putaran ke-3 selesai, 
+          air putaran ke-1 sudah tidak panas lagi. Tidak cocok untuk kebutuhan 5L sekaligus!
         </div>
       </div>`
   },
