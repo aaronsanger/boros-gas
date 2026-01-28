@@ -119,6 +119,7 @@ body {
   width: 100%;
   height: 100vh;
   padding-top: 70px;
+  overflow: hidden;
 }
 
 .slide {
@@ -127,13 +128,20 @@ body {
   height: calc(100vh - 70px);
   padding: 2rem;
   overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
 }
 
 .slide.active {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  /* Changed from center to prevent cutoff */
   animation: fadeIn 0.4s ease;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 @keyframes fadeIn {
@@ -2406,17 +2414,27 @@ button.ext-link {
   /* Slides Container */
   .slides-container {
     padding-top: 56px;
-    padding-bottom: 10px;
+    padding-bottom: 0;
+    height: calc(100vh - 56px);
+    overflow: hidden;
   }
 
   .slide {
-    min-height: calc(100vh - 66px);
+    height: calc(100vh - 56px);
+    min-height: unset;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+    padding-bottom: 80px;
+    /* Extra space for bottom content */
   }
 
   .slide-content {
-    padding: 1rem;
+    padding: 0.75rem;
     max-width: 100%;
-    margin: 0.5rem;
+    margin: 0;
+    width: 100%;
   }
 
   /* Slide Header */
