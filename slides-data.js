@@ -318,6 +318,63 @@ const slidesData = [
   },
   {
     id: 16,
+    number: '15',
+    title: 'Kalkulasi: Air untuk Mandi',
+    content: `
+      <div class="bath-calculation">
+        <div class="bath-header">
+          <span class="bath-icon">🛁</span>
+          <h3>Berapa Biaya Memasak Air untuk Mandi?</h3>
+        </div>
+        
+        <div class="bath-data">
+          <div class="data-card">
+            <span class="label">Data Pengukuran</span>
+            <span class="value">2 Liter = 5-10 menit</span>
+          </div>
+          <div class="data-card highlight">
+            <span class="label">Untuk 3 Liter</span>
+            <span class="value">7.5 - 15 menit</span>
+          </div>
+        </div>
+
+        <div class="bath-calc-table">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Nilai</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Volume air mandi</td><td>3 Liter</td></tr>
+              <tr><td>Waktu memasak (estimasi)</td><td>7.5 - 15 menit</td></tr>
+              <tr><td>Rata-rata waktu</td><td>11.25 menit</td></tr>
+              <tr><td>Konsumsi gas (16g/jam = 0.267g/min)</td><td>≈ 3 gram</td></tr>
+              <tr><td>Harga gas per gram</td><td>Rp 16</td></tr>
+              <tr class="total"><td>Biaya per mandi</td><td class="highlight">≈ Rp 48</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bath-summary">
+          <div class="summary-card">
+            <span class="icon">💧</span>
+            <span class="val">Rp 48</span>
+            <span class="lbl">Per Mandi (3L)</span>
+          </div>
+          <div class="summary-card">
+            <span class="icon">📅</span>
+            <span class="val">Rp 1.440</span>
+            <span class="lbl">30 Kali Mandi/Bulan</span>
+          </div>
+        </div>
+
+        <div class="bath-note">
+          <strong>💡 Catatan:</strong> Biaya ini sudah termasuk dalam estimasi penggunaan harian. 
+          Mandi dengan air hangat = aktivitas dapur normal, bukan "boros".
+        </div>
+      </div>`
+  },
+  {
+    id: 17,
     type: 'conclusion',
     title: 'Kesimpulan',
     verdict: 'Penggunaan Gas Anda TIDAK BOROS',
@@ -331,6 +388,16 @@ const slidesData = [
       contribution: '~Rp 79.2 Juta (3+ tahun)',
       gasCost: 'Rp 1.024 (4 hari)'
     }
+  },
+  {
+    id: 18,
+    type: 'voting',
+    title: 'Pendapat Anda?',
+    question: 'Setelah melihat semua data dan analisis, menurut Anda penggunaan gas ini:',
+    options: [
+      { id: 'boros', emoji: '🔴', label: 'BOROS', desc: 'Penggunaan gas berlebihan' },
+      { id: 'tidak', emoji: '🟢', label: 'TIDAK BOROS', desc: 'Penggunaan wajar dan hemat' }
+    ]
   }
 ];
 

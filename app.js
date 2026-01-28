@@ -22,6 +22,7 @@ class SlidePresentation {
   createSlide(slide) {
     if (slide.type === 'title') return this.createTitleSlide(slide);
     if (slide.type === 'conclusion') return this.createConclusionSlide(slide);
+    if (slide.type === 'voting') return this.createVotingSlide(slide);
     return this.createContentSlide(slide);
   }
 
@@ -75,6 +76,49 @@ class SlidePresentation {
           </div>
         </div>
       </section>`;
+  }
+
+  createVotingSlide(slide) {
+    const optionsHtml = slide.options.map(opt => `
+      <button class="vote-option" data-vote="${opt.id}" onclick="presentation.vote('${opt.id}')">
+        <span class="vote-emoji">${opt.emoji}</span>
+        <span class="vote-label">${opt.label}</span>
+        <span class="vote-desc">${opt.desc}</span>
+      </button>
+    `).join('');
+
+    return `
+      <section class="slide" data-slide="${slide.id}">
+        <div class="slide-content voting">
+          <h2>${slide.title}</h2>
+          <p class="vote-question">${slide.question}</p>
+          <div class="vote-options">${optionsHtml}</div>
+          <div class="vote-result" id="voteResult" style="display: none;">
+            <div class="result-icon">🎉</div>
+            <div class="result-text">Terima kasih atas pendapat Anda!</div>
+          </div>
+          <div class="vote-footer">
+            <p>Voting ini hanya untuk ilustrasi dan tidak disimpan.</p>
+          </div>
+        </div>
+      </section>`;
+  }
+
+  vote(choice) {
+    const options = document.querySelectorAll('.vote-option');
+    options.forEach(opt => {
+      opt.classList.remove('selected');
+      if (opt.dataset.vote === choice) {
+        opt.classList.add('selected');
+      }
+    });
+
+    const result = document.getElementById('voteResult');
+    result.style.display = 'block';
+    result.querySelector('.result-text').textContent =
+      choice === 'tidak'
+        ? '✅ Anda setuju: Penggunaan gas TIDAK BOROS!'
+        : '🤔 Anda memilih: Penggunaan gas BOROS';
   }
 
   renderDisclaimer() {
@@ -392,6 +436,14 @@ class SlidePresentation {
     document.getElementById('progressFill').style.width = `${(this.currentSlide / this.totalSlides) * 100}%`;
     document.getElementById('prevBtn').disabled = this.currentSlide === 1;
     document.getElementById('nextBtn').disabled = this.currentSlide === this.totalSlides;
+
+    // Spotlight on next button for first page only
+    const nextBtn = document.getElementById('nextBtn');
+    if (this.currentSlide === 1) {
+      nextBtn.classList.add('spotlight');
+    } else {
+      nextBtn.classList.remove('spotlight');
+    }
   }
 
   toggleDisclaimer() {
