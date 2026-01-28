@@ -80,7 +80,7 @@ class SlidePresentation {
 
   createVotingSlide(slide) {
     const optionsHtml = slide.options.map(opt => `
-      <button class="vote-option" data-vote="${opt.id}" onclick="presentation.vote('${opt.id}')">
+      <button class="vote-option" data-vote="${opt.id}" onclick="submitVote('${opt.id}')">
         <span class="vote-emoji">${opt.emoji}</span>
         <span class="vote-label">${opt.label}</span>
         <span class="vote-desc">${opt.desc}</span>
@@ -97,28 +97,35 @@ class SlidePresentation {
             <div class="result-icon">🎉</div>
             <div class="result-text">Terima kasih atas pendapat Anda!</div>
           </div>
+          <div id="voteCountDisplay" class="vote-count-display"></div>
           <div class="vote-footer">
-            <p>Voting ini hanya untuk ilustrasi dan tidak disimpan.</p>
+            <p>🔒 Voting disimpan secara anonim (maksimal 2 vote per IP)</p>
           </div>
         </div>
       </section>`;
   }
 
   vote(choice) {
-    const options = document.querySelectorAll('.vote-option');
-    options.forEach(opt => {
-      opt.classList.remove('selected');
-      if (opt.dataset.vote === choice) {
-        opt.classList.add('selected');
-      }
-    });
+    // Delegate to global submitVote function from supabase-voting.js
+    if (typeof submitVote === 'function') {
+      submitVote(choice);
+    } else {
+      // Fallback for old behavior
+      const options = document.querySelectorAll('.vote-option');
+      options.forEach(opt => {
+        opt.classList.remove('selected');
+        if (opt.dataset.vote === choice) {
+          opt.classList.add('selected');
+        }
+      });
 
-    const result = document.getElementById('voteResult');
-    result.style.display = 'block';
-    result.querySelector('.result-text').textContent =
-      choice === 'tidak'
-        ? '✅ Anda setuju: Penggunaan gas TIDAK BOROS!'
-        : '🤔 Anda memilih: Penggunaan gas BOROS';
+      const result = document.getElementById('voteResult');
+      result.style.display = 'block';
+      result.querySelector('.result-text').textContent =
+        choice === 'tidak'
+          ? '✅ Anda setuju: Penggunaan gas TIDAK BOROS!'
+          : '🤔 Anda memilih: Penggunaan gas BOROS';
+    }
   }
 
   renderDisclaimer() {

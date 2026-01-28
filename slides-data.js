@@ -329,47 +329,48 @@ const slidesData = [
         
         <div class="bath-data">
           <div class="data-card">
-            <span class="label">Data Pengukuran</span>
+            <span class="label">📏 Data Pengukuran</span>
             <span class="value">2 Liter = 5-10 menit</span>
           </div>
-          <div class="data-card highlight">
-            <span class="label">Untuk 3 Liter</span>
-            <span class="value">7.5 - 15 menit</span>
+          <div class="data-card">
+            <span class="label">⏱️ Rata-rata</span>
+            <span class="value">7.5 menit per 2L</span>
           </div>
         </div>
 
         <div class="bath-calc-table">
           <table>
             <thead>
-              <tr><th>Item</th><th>Nilai</th></tr>
+              <tr><th>Volume</th><th>Waktu</th><th>Gas</th><th>Biaya</th></tr>
             </thead>
             <tbody>
-              <tr><td>Volume air mandi</td><td>3 Liter</td></tr>
-              <tr><td>Waktu memasak (estimasi)</td><td>7.5 - 15 menit</td></tr>
-              <tr><td>Rata-rata waktu</td><td>11.25 menit</td></tr>
-              <tr><td>Konsumsi gas (16g/jam = 0.267g/min)</td><td>≈ 3 gram</td></tr>
-              <tr><td>Harga gas per gram</td><td>Rp 16</td></tr>
-              <tr class="total"><td>Biaya per mandi</td><td class="highlight">≈ Rp 48</td></tr>
+              <tr><td>2 Liter</td><td>5-10 menit</td><td>~2g</td><td class="cost">Rp 32</td></tr>
+              <tr><td>3 Liter</td><td>7.5-15 menit</td><td>~3g</td><td class="cost">Rp 48</td></tr>
+              <tr class="total"><td>5 Liter</td><td>12.5-25 menit</td><td>~5g</td><td class="highlight">Rp 80</td></tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="bath-formula">
+          <p><strong>📐 Rumus:</strong> Konsumsi = 150g/jam × waktu(jam) → Biaya = konsumsi × Rp16/g</p>
         </div>
 
         <div class="bath-summary">
           <div class="summary-card">
             <span class="icon">💧</span>
-            <span class="val">Rp 48</span>
-            <span class="lbl">Per Mandi (3L)</span>
+            <span class="val">Rp 80</span>
+            <span class="lbl">Per Mandi (5L)</span>
           </div>
           <div class="summary-card">
             <span class="icon">📅</span>
-            <span class="val">Rp 1.440</span>
+            <span class="val">Rp 2.400</span>
             <span class="lbl">30 Kali Mandi/Bulan</span>
           </div>
         </div>
 
         <div class="bath-note">
-          <strong>💡 Catatan:</strong> Biaya ini sudah termasuk dalam estimasi penggunaan harian. 
-          Mandi dengan air hangat = aktivitas dapur normal, bukan "boros".
+          <strong>💡 Catatan:</strong> Biaya 5L air hangat per mandi = Rp 80. 
+          Dibanding biaya kost Rp 2.1 Juta, ini hanya <strong>0.11%</strong> - sangat wajar!
         </div>
       </div>`
   },
