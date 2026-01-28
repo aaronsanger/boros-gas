@@ -276,14 +276,14 @@ const slidesData = [
     title: 'Perbandingan: Gas vs Ketel Listrik',
     content: `
       <div class="comparison-full">
-        <h3>⚖️ Perbandingan Lengkap untuk Kebutuhan 5 Liter</h3>
+        <h3>⚖️ Perbandingan untuk Kebutuhan 5 Liter (Mandi)</h3>
         
         <div class="compare-grid">
           <div class="compare-card gas-card">
             <div class="card-header">🔥 Kompor Gas (2 Tungku)</div>
             <div class="card-content">
               <div class="time-box">
-                <span class="time-value">5-10</span>
+                <span class="time-value">7-10</span>
                 <span class="time-unit">menit</span>
               </div>
               <ul class="pros-list">
@@ -301,7 +301,7 @@ const slidesData = [
             <div class="card-header">⚡ Ketel Listrik 2L</div>
             <div class="card-content">
               <div class="time-box warning">
-                <span class="time-value">15-20</span>
+                <span class="time-value">12-18</span>
                 <span class="time-unit">menit</span>
               </div>
               <ul class="cons-list">
@@ -315,50 +315,74 @@ const slidesData = [
         </div>
 
         <div class="time-comparison">
-          <h4>⏱️ Perbandingan Waktu & Praktis</h4>
+          <h4>⏱️ Perbandingan Waktu</h4>
           <table class="compare-table time-table">
             <thead>
               <tr>
                 <th>Volume</th>
                 <th>🔥 Gas (2 Tungku)</th>
                 <th>⚡ Ketel (2L)</th>
-                <th>Masalah Ketel</th>
+                <th>Status Air Ketel</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>2 Liter</strong></td>
-                <td class="win-gas">5 min ✓</td>
-                <td>5 min (1×)</td>
-                <td>-</td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>4-6 min (1×)</td>
+                <td>✅ Panas</td>
               </tr>
               <tr>
-                <td><strong>3 Liter</strong></td>
-                <td class="win-gas">7 min ✓</td>
-                <td>10 min (2×)</td>
-                <td>⚠️ Batch 1 mulai dingin</td>
+                <td><strong>4 Liter</strong></td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>8-12 min (2×)</td>
+                <td>⚠️ Batch 1: ~80°C</td>
               </tr>
               <tr>
-                <td><strong>5 Liter</strong></td>
-                <td class="win-gas">10 min ✓</td>
-                <td>15 min (3×)</td>
-                <td>❌ Batch 1 sudah dingin!</td>
+                <td><strong>5-6 Liter</strong></td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>12-18 min (3×)</td>
+                <td>❌ Batch 1: ~70°C</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="cooling-info">
+          <h4>🌡️ Data Pendinginan Air (dari 100°C)</h4>
+          <div class="cooling-timeline">
+            <div class="cooling-step">
+              <span class="cooling-time">0 min</span>
+              <span class="cooling-temp hot">100°C</span>
+              <span class="cooling-label">Baru mendidih</span>
+            </div>
+            <div class="cooling-arrow">→</div>
+            <div class="cooling-step">
+              <span class="cooling-time">5-6 min</span>
+              <span class="cooling-temp warm">~70°C</span>
+              <span class="cooling-label">Sudah turun 30°C</span>
+            </div>
+            <div class="cooling-arrow">→</div>
+            <div class="cooling-step">
+              <span class="cooling-time">15 min</span>
+              <span class="cooling-temp cool">~55°C</span>
+              <span class="cooling-label">Hangat-hangat</span>
+            </div>
+          </div>
+          <div class="source-ref">📚 Sumber: Physics Stack Exchange, OmniCalculator - Water Cooling Rate</div>
         </div>
 
         <div class="winner-box gas-winner-box">
           <span class="winner-icon">🏆</span>
           <div class="winner-text">
             <strong>Gas dengan 2 Tungku MENANG!</strong>
-            <p>Lebih cepat, lebih praktis, semua air panas bersamaan.</p>
+            <p>Semua 5L air panas bersamaan dalam 7-10 menit.</p>
           </div>
         </div>
 
         <div class="calc-note warning-note">
-          ⚠️ <strong>Masalah Ketel untuk Mandi:</strong> Saat putaran ke-3 selesai, 
-          air putaran ke-1 sudah tidak panas lagi. Tidak cocok untuk kebutuhan 5L sekaligus!
+          ⚠️ <strong>Masalah Ketel:</strong> Saat putaran ke-3 selesai (menit ke-15), 
+          air batch 1 sudah turun dari 100°C ke ~70°C. Tidak ideal untuk mandi!
         </div>
       </div>`
   },
