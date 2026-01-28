@@ -273,51 +273,86 @@ const slidesData = [
   {
     id: 12,
     number: '11',
-    title: 'Kompor Gas vs Ketel Listrik',
+    title: 'Kalkulator: Gas vs Listrik',
     content: `
-      <div class="compare-section">
-        <h3>⚖️ Perbandingan Biaya per Volume Air</h3>
-        <div class="volume-tabs">
-          <p class="note">Ketel 2L perlu beberapa kali panaskan untuk volume besar:</p>
+      <div class="calculator-section">
+        <h3>🧮 Kalkulator Biaya - Sesuaikan Tarif Anda</h3>
+        
+        <div class="calc-inputs">
+          <div class="input-group gas-input">
+            <label>🔥 Harga Gas LPG 12kg</label>
+            <div class="input-wrapper">
+              <span class="prefix">Rp</span>
+              <input type="number" id="gasPrice" value="235000" min="100000" max="300000" step="1000">
+            </div>
+            <small>Per kg: <span id="gasPricePerKg">Rp 19.583</span> | Per gram: <span id="gasPricePerGram">Rp 19.6</span></small>
+          </div>
+          <div class="input-group electric-input">
+            <label>⚡ Tarif Listrik PLN</label>
+            <div class="input-wrapper">
+              <span class="prefix">Rp</span>
+              <input type="number" id="electricRate" value="1699" min="500" max="3000" step="1">
+              <span class="suffix">/kWh</span>
+            </div>
+            <small>Golongan R1 2200VA+ (tertinggi)</small>
+          </div>
         </div>
-        <table class="compare-table volume-compare">
-          <thead>
-            <tr>
-              <th>Volume</th>
-              <th>🔥 Gas<br><small>1× masak</small></th>
-              <th>⚡ Ketel 2L<br><small>berapa kali?</small></th>
-              <th>Pemenang</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>2 Liter</strong></td>
-              <td>Rp 27<br><small>5-8 min</small></td>
-              <td>Rp 60<br><small>1× (5 min)</small></td>
-              <td class="win-gas">🔥 Gas</td>
-            </tr>
-            <tr>
-              <td><strong>3 Liter</strong></td>
-              <td>Rp 40<br><small>7-10 min</small></td>
-              <td>Rp 90<br><small>2× (10 min)</small></td>
-              <td class="win-gas">🔥 Gas</td>
-            </tr>
-            <tr>
-              <td><strong>5 Liter</strong><br><small>(mandi)</small></td>
-              <td>Rp 80<br><small>12-15 min</small></td>
-              <td>Rp 150<br><small>3× (15 min)</small></td>
-              <td class="win-gas">🔥 Gas</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="compare-summary">
-          <div class="summary-card gas-win">
-            <span class="icon">🔥</span>
-            <span class="text"><strong>Gas lebih hemat</strong> untuk volume besar karena ketel harus panaskan berulang!</span>
+
+        <div class="calc-results-table">
+          <table class="compare-table dynamic-compare">
+            <thead>
+              <tr>
+                <th>Volume</th>
+                <th>🔥 Gas<br><small>1× masak</small></th>
+                <th>⚡ Ketel 2L<br><small>berapa kali?</small></th>
+                <th>Hemat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2 Liter</strong></td>
+                <td id="gas2L">Rp 157</td>
+                <td id="kettle2L">Rp 71<br><small>1× (5 min)</small></td>
+                <td id="winner2L" class="winner-cell">⚡ -55%</td>
+              </tr>
+              <tr>
+                <td><strong>3 Liter</strong></td>
+                <td id="gas3L">Rp 196</td>
+                <td id="kettle3L">Rp 142<br><small>2× (10 min)</small></td>
+                <td id="winner3L" class="winner-cell">⚡ -28%</td>
+              </tr>
+              <tr>
+                <td><strong>5 Liter</strong><br><small>(mandi)</small></td>
+                <td id="gas5L">Rp 294</td>
+                <td id="kettle5L">Rp 213<br><small>3× (15 min)</small></td>
+                <td id="winner5L" class="winner-cell">⚡ -28%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="monthly-summary">
+          <h4>📅 Estimasi Biaya Bulanan (30 hari × 5L/hari)</h4>
+          <div class="monthly-cards">
+            <div class="monthly-card gas">
+              <span class="icon">🔥</span>
+              <span class="label">Gas</span>
+              <span class="amount" id="gasMonthly">Rp 8.820</span>
+            </div>
+            <div class="monthly-card electric">
+              <span class="icon">⚡</span>
+              <span class="label">Listrik</span>
+              <span class="amount" id="electricMonthly">Rp 6.372</span>
+            </div>
           </div>
-          <div class="summary-note">
-            💡 Di kost ini, gas sudah termasuk fasilitas. Kompor gas adalah pilihan paling efisien.
+          <div id="calcConclusion" class="calc-conclusion">
+            ⚡ Ketel listrik lebih hemat <strong>Rp 2.448/bulan</strong> (28%)
           </div>
+        </div>
+
+        <div class="calc-note">
+          💡 <strong>Catatan:</strong> Ketel listrik lebih hemat per Rupiah, tapi perlu 3× bolak-balik untuk 5L. 
+          Gas dengan 2 tungku bisa panaskan 5L sekaligus dalam 1× operasi.
         </div>
       </div>`
   },

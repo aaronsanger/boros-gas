@@ -495,4 +495,115 @@ class SlidePresentation {
 let presentation;
 document.addEventListener('DOMContentLoaded', () => {
   presentation = new SlidePresentation();
+  initCalculator();
 });
+
+// Cost Calculator Functions
+function initCalculator() {
+  const gasInput = document.getElementById('gasPrice');
+  const electricInput = document.getElementById('electricRate');
+
+  if (gasInput && electricInput) {
+    gasInput.addEventListener('input', updateCalculations);
+    electricInput.addEventListener('input', updateCalculations);
+    updateCalculations(); // Initial calculation
+  }
+}
+
+function updateCalculations() {
+  const gasPrice12kg = parseFloat(document.getElementById('gasPrice')?.value) || 235000;
+  const electricRate = parseFloat(document.getElementById('electricRate')?.value) || 1699;
+
+  // Gas calculations
+  const gasPricePerKg = gasPrice12kg / 12;
+  const gasPricePerGram = gasPricePerKg / 1000;
+
+  // Update display
+  const gasPricePerKgEl = document.getElementById('gasPricePerKg');
+  const gasPricePerGramEl = document.getElementById('gasPricePerGram');
+  if (gasPricePerKgEl) gasPricePerKgEl.textContent = `Rp ${formatNumber(gasPricePerKg)}`;
+  if (gasPricePerGramEl) gasPricePerGramEl.textContent = `Rp ${gasPricePerGram.toFixed(1)}`;
+
+  // Gas consumption per volume (grams) - based on ~150g/hour stove
+  const gasGrams2L = 8;  // ~5 min at 150g/hour
+  const gasGrams3L = 10; // ~7 min at 150g/hour
+  const gasGrams5L = 15; // ~12 min at 150g/hour
+
+  // Gas costs
+  const gasCost2L = Math.round(gasGrams2L * gasPricePerGram);
+  const gasCost3L = Math.round(gasGrams3L * gasPricePerGram);
+  const gasCost5L = Math.round(gasGrams5L * gasPricePerGram);
+
+  // Electric kettle: 500W, 5 min per 2L = 0.042 kWh
+  const kwhPer2L = 0.042;
+  const kettleCost2L = Math.round(kwhPer2L * electricRate);
+  const kettleCost3L = Math.round(kwhPer2L * 2 * electricRate); // 2 rounds
+  const kettleCost5L = Math.round(kwhPer2L * 3 * electricRate); // 3 rounds
+
+  // Update table
+  updateCell('gas2L', gasCost2L);
+  updateCell('gas3L', gasCost3L);
+  updateCell('gas5L', gasCost5L);
+
+  updateKettleCell('kettle2L', kettleCost2L, '1× (5 min)');
+  updateKettleCell('kettle3L', kettleCost3L, '2× (10 min)');
+  updateKettleCell('kettle5L', kettleCost5L, '3× (15 min)');
+
+  // Update winner cells
+  updateWinner('winner2L', gasCost2L, kettleCost2L);
+  updateWinner('winner3L', gasCost3L, kettleCost3L);
+  updateWinner('winner5L', gasCost5L, kettleCost5L);
+
+  // Monthly costs (30 days × 5L/day)
+  const gasMonthly = gasCost5L * 30;
+  const electricMonthly = kettleCost5L * 30;
+
+  const gasMonthlyEl = document.getElementById('gasMonthly');
+  const electricMonthlyEl = document.getElementById('electricMonthly');
+  if (gasMonthlyEl) gasMonthlyEl.textContent = `Rp ${formatNumber(gasMonthly)}`;
+  if (electricMonthlyEl) electricMonthlyEl.textContent = `Rp ${formatNumber(electricMonthly)}`;
+
+  // Conclusion
+  const conclusionEl = document.getElementById('calcConclusion');
+  if (conclusionEl) {
+    const diff = Math.abs(gasMonthly - electricMonthly);
+    const percent = Math.round((diff / Math.max(gasMonthly, electricMonthly)) * 100);
+    if (gasMonthly < electricMonthly) {
+      conclusionEl.innerHTML = `🔥 Gas lebih hemat <strong>Rp ${formatNumber(diff)}/bulan</strong> (${percent}%)`;
+      conclusionEl.className = 'calc-conclusion gas-wins';
+    } else {
+      conclusionEl.innerHTML = `⚡ Ketel listrik lebih hemat <strong>Rp ${formatNumber(diff)}/bulan</strong> (${percent}%)`;
+      conclusionEl.className = 'calc-conclusion electric-wins';
+    }
+  }
+}
+
+function updateCell(id, cost) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = `Rp ${formatNumber(cost)}`;
+}
+
+function updateKettleCell(id, cost, rounds) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = `Rp ${formatNumber(cost)}<br><small>${rounds}</small>`;
+}
+
+function updateWinner(id, gasCost, kettleCost) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const diff = gasCost - kettleCost;
+  const percent = Math.round((Math.abs(diff) / Math.max(gasCost, kettleCost)) * 100);
+
+  if (gasCost < kettleCost) {
+    el.innerHTML = `🔥 -${percent}%`;
+    el.className = 'winner-cell gas-winner';
+  } else {
+    el.innerHTML = `⚡ -${percent}%`;
+    el.className = 'winner-cell electric-winner';
+  }
+}
+
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
