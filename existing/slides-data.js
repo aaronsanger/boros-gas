@@ -273,56 +273,117 @@ const slidesData = [
   {
     id: 12,
     number: '11',
-    title: 'Gas vs Ketel Listrik',
+    title: 'Perbandingan: Gas vs Ketel Listrik',
     content: `
-      <div class="compact-compare">
-        <div class="compare-header">
-          <h3>⚖️ Mana Lebih Baik untuk 5L Mandi?</h3>
-        </div>
+      <div class="comparison-full">
+        <h3>⚖️ Perbandingan untuk Kebutuhan 5 Liter (Mandi)</h3>
         
-        <div class="compare-row">
-          <div class="compare-item winner">
-            <div class="item-icon">🔥</div>
-            <div class="item-title">Gas 2 Tungku</div>
-            <div class="item-time"><span class="time-num">7-10</span> menit</div>
-            <div class="item-badges">
-              <span class="badge good">✓ Sekaligus</span>
-              <span class="badge good">✓ Semua Panas</span>
+        <div class="compare-grid">
+          <div class="compare-card gas-card">
+            <div class="card-header">🔥 Kompor Gas (2 Tungku)</div>
+            <div class="card-content">
+              <div class="time-box">
+                <span class="time-value">7-10</span>
+                <span class="time-unit">menit</span>
+              </div>
+              <ul class="pros-list">
+                <li class="pro">✓ Panci 2.3L + Teko 3L sekaligus</li>
+                <li class="pro">✓ Semua air panas bersamaan</li>
+                <li class="pro">✓ 1× operasi saja</li>
+                <li class="pro">✓ Tidak perlu bolak-balik</li>
+              </ul>
             </div>
           </div>
           
-          <div class="compare-vs">VS</div>
+          <div class="vs-badge">VS</div>
           
-          <div class="compare-item loser">
-            <div class="item-icon">⚡</div>
-            <div class="item-title">Ketel 2L</div>
-            <div class="item-time"><span class="time-num">12-18</span> menit</div>
-            <div class="item-badges">
-              <span class="badge bad">✗ 3× Putaran</span>
-              <span class="badge bad">✗ Air Dingin</span>
+          <div class="compare-card kettle-card">
+            <div class="card-header">⚡ Ketel Listrik 2L</div>
+            <div class="card-content">
+              <div class="time-box warning">
+                <span class="time-value">12-18</span>
+                <span class="time-unit">menit</span>
+              </div>
+              <ul class="cons-list">
+                <li class="con">✗ Perlu 3× putaran untuk 5L</li>
+                <li class="con">✗ Air putaran 1 sudah DINGIN</li>
+                <li class="con">✗ Harus bolak-balik tuang</li>
+                <li class="con">✗ Tidak praktis untuk mandi</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div class="cooling-bar">
-          <div class="cooling-title">🌡️ Air Batch 1 Ketel:</div>
-          <div class="cooling-steps">
-            <span class="step hot">100°C</span>
-            <span class="arrow">→</span>
-            <span class="step warm">70°C <small>(6 min)</small></span>
-            <span class="arrow">→</span>
-            <span class="step cool">55°C <small>(15 min)</small></span>
-          </div>
-          <div class="cooling-note">Batch 1 sudah dingin saat batch 3 selesai!</div>
+        <div class="time-comparison">
+          <h4>⏱️ Perbandingan Waktu</h4>
+          <table class="compare-table time-table">
+            <thead>
+              <tr>
+                <th>Volume</th>
+                <th>🔥 Gas (2 Tungku)</th>
+                <th>⚡ Ketel (2L)</th>
+                <th>Status Air Ketel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2 Liter</strong></td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>4-6 min (1×)</td>
+                <td>✅ Panas</td>
+              </tr>
+              <tr>
+                <td><strong>4 Liter</strong></td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>8-12 min (2×)</td>
+                <td>⚠️ Batch 1: ~80°C</td>
+              </tr>
+              <tr>
+                <td><strong>5-6 Liter</strong></td>
+                <td class="win-gas">7-10 min ✓</td>
+                <td>12-18 min (3×)</td>
+                <td>❌ Batch 1: ~70°C</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="compact-winner">
-          <span class="trophy">🏆</span>
-          <span class="winner-label">Gas MENANG!</span>
-          <span class="winner-reason">5L panas bersamaan dalam 7-10 menit</span>
+        <div class="cooling-info">
+          <h4>🌡️ Data Pendinginan Air (dari 100°C)</h4>
+          <div class="cooling-timeline">
+            <div class="cooling-step">
+              <span class="cooling-time">0 min</span>
+              <span class="cooling-temp hot">100°C</span>
+              <span class="cooling-label">Baru mendidih</span>
+            </div>
+            <div class="cooling-arrow">→</div>
+            <div class="cooling-step">
+              <span class="cooling-time">5-6 min</span>
+              <span class="cooling-temp warm">~70°C</span>
+              <span class="cooling-label">Sudah turun 30°C</span>
+            </div>
+            <div class="cooling-arrow">→</div>
+            <div class="cooling-step">
+              <span class="cooling-time">15 min</span>
+              <span class="cooling-temp cool">~55°C</span>
+              <span class="cooling-label">Hangat-hangat</span>
+            </div>
+          </div>
+          <div class="source-ref">📚 Sumber: Physics Stack Exchange, OmniCalculator - Water Cooling Rate</div>
         </div>
-        
-        <div class="source-ref compact-source">📚 Data pendinginan: Physics Stack Exchange, OmniCalculator</div>
+
+        <div class="winner-box gas-winner-box">
+          <span class="winner-icon">🏆</span>
+          <div class="winner-text">
+            <strong>Gas dengan 2 Tungku MENANG!</strong>
+            <p>Semua 5L air panas bersamaan dalam 7-10 menit.</p>
+          </div>
+        </div>
+
+        <div class="calc-note warning-note">
+          ⚠️ <strong>Masalah Ketel:</strong> Saat putaran ke-3 selesai (menit ke-15), 
+          air batch 1 sudah turun dari 100°C ke ~70°C. Tidak ideal untuk mandi!
+        </div>
       </div>`
   },
   {
@@ -358,6 +419,76 @@ const slidesData = [
   },
   {
     id: 15,
+    number: '14',
+    title: 'Rekomendasi',
+    content: `
+      <div class="recommendations">
+        <div class="rec primary"><span class="num">1</span><div><h4>Komunikasi dengan Pemilik</h4><p>Tunjukkan screenshot fasilitas bahwa "Dapur" termasuk dalam iklan.</p></div></div>
+        <div class="rec"><span class="num">2</span><div><h4>Pertimbangkan Electric Kettle</h4><p>Lebih hemat (Rp 7.225/bulan) dan aman.</p></div></div>
+        <div class="rec"><span class="num">3</span><div><h4>Dokumentasi</h4><p>Simpan semua bukti: screenshot iklan, pembayaran, perhitungan ini.</p></div></div>
+        <div class="rec"><span class="num">4</span><div><h4>Negosiasi Jika Perlu</h4><p>Minta kejelasan tertulis dan negosiasi berdasarkan data faktual.</p></div></div>
+      </div>`
+  },
+  {
+    id: 16,
+    number: '15',
+    title: 'Kalkulasi: Air untuk Mandi',
+    content: `
+      <div class="bath-calculation">
+        <div class="bath-header">
+          <span class="bath-icon">🛁</span>
+          <h3>Berapa Biaya Memasak Air untuk Mandi?</h3>
+        </div>
+        
+        <div class="bath-data">
+          <div class="data-card">
+            <span class="label">📏 Data Pengukuran</span>
+            <span class="value">2 Liter = 5-10 menit</span>
+          </div>
+          <div class="data-card">
+            <span class="label">⏱️ Rata-rata</span>
+            <span class="value">7.5 menit per 2L</span>
+          </div>
+        </div>
+
+        <div class="bath-calc-table">
+          <table>
+            <thead>
+              <tr><th>Volume</th><th>Waktu</th><th>Gas</th><th>Biaya</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2 Liter</td><td>5-10 menit</td><td>~2g</td><td class="cost">Rp 32</td></tr>
+              <tr><td>3 Liter</td><td>7.5-15 menit</td><td>~3g</td><td class="cost">Rp 48</td></tr>
+              <tr class="total"><td>5 Liter</td><td>12.5-25 menit</td><td>~5g</td><td class="highlight">Rp 80</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bath-formula">
+          <p><strong>📐 Rumus:</strong> Konsumsi = 150g/jam × waktu(jam) → Biaya = konsumsi × Rp16/g</p>
+        </div>
+
+        <div class="bath-summary">
+          <div class="summary-card">
+            <span class="icon">💧</span>
+            <span class="val">Rp 80</span>
+            <span class="lbl">Per Mandi (5L)</span>
+          </div>
+          <div class="summary-card">
+            <span class="icon">📅</span>
+            <span class="val">Rp 2.400</span>
+            <span class="lbl">30 Kali Mandi/Bulan</span>
+          </div>
+        </div>
+
+        <div class="bath-note">
+          <strong>💡 Catatan:</strong> Biaya 5L air hangat per mandi = Rp 80. 
+          Dibanding biaya kost Rp 2.1 Juta, ini hanya <strong>0.11%</strong> - sangat wajar!
+        </div>
+      </div>`
+  },
+  {
+    id: 17,
     type: 'conclusion',
     title: 'Kesimpulan',
     verdict: 'Penggunaan Gas Anda TIDAK BOROS',
@@ -373,7 +504,7 @@ const slidesData = [
     }
   },
   {
-    id: 16,
+    id: 18,
     type: 'voting',
     title: 'Pendapat Anda?',
     question: 'Setelah melihat semua data dan analisis, menurut Anda penggunaan gas ini:',
