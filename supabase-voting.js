@@ -1,23 +1,38 @@
 // Supabase Voting Integration
-// Connection: postgresql://postgres.hdhcsifwgvzskqwqebgc:gasboros321@!@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres
+// Configuration is loaded from config.js (not committed to version control)
+// See config.example.js for setup instructions
 
-const SUPABASE_URL = 'https://hdhcsifwgvzskqwqebgc.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkaGNzaWZ3Z3Z6c2txd3FlYmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgwNDQ3NTcsImV4cCI6MjA1MzYyMDc1N30.placeholder';
-
-// Note: Replace SUPABASE_ANON_KEY with actual anon key from Supabase dashboard
+// Check if CONFIG is loaded
+const getConfig = () => {
+    if (typeof CONFIG === 'undefined') {
+        console.warn('⚠️ config.js not loaded. Voting will use local-only mode.');
+        return {
+            SUPABASE_URL: '',
+            SUPABASE_ANON_KEY: '',
+            MAX_VOTES_PER_IP: 2,
+            ENABLE_SUPABASE_VOTING: false
+        };
+    }
+    return CONFIG;
+};
 
 class VotingSystem {
     constructor() {
+        this.config = getConfig();
         this.userIP = null;
         this.voteCounts = { boros: 0, tidak: 0 };
         this.userVoted = false;
+        this.maxVotesPerIP = this.config.MAX_VOTES_PER_IP || 2;
         this.init();
     }
 
     async init() {
         await this.getUserIP();
-        await this.loadVoteCounts();
-        await this.checkUserVoteStatus();
+        if (this.config.ENABLE_SUPABASE_VOTING && this.config.SUPABASE_ANON_KEY) {
+            await this.loadVoteCounts();
+            await this.checkUserVoteStatus();
+        }
+        this.updateVoteUI();
     }
 
     async getUserIP() {
@@ -32,11 +47,13 @@ class VotingSystem {
     }
 
     async loadVoteCounts() {
+        if (!this.config.ENABLE_SUPABASE_VOTING) return;
+
         try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/gas_votes?select=vote`, {
+            const response = await fetch(`${this.config.SUPABASE_URL}/rest/v1/gas_votes?select=vote`, {
                 headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    'apikey': this.config.SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${this.config.SUPABASE_ANON_KEY}`
                 }
             });
 
@@ -47,7 +64,6 @@ class VotingSystem {
                     if (v.vote === 'boros') this.voteCounts.boros++;
                     if (v.vote === 'tidak') this.voteCounts.tidak++;
                 });
-                this.updateVoteUI();
             }
         } catch (error) {
             console.log('Could not load vote counts:', error);
@@ -55,20 +71,20 @@ class VotingSystem {
     }
 
     async checkUserVoteStatus() {
-        if (!this.userIP) return;
+        if (!this.userIP || !this.config.ENABLE_SUPABASE_VOTING) return;
 
         try {
             const response = await fetch(
-                `${SUPABASE_URL}/rest/v1/gas_votes?ip_address=eq.${this.userIP}&select=id`, {
+                `${this.config.SUPABASE_URL}/rest/v1/gas_votes?ip_address=eq.${this.userIP}&select=id`, {
                 headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    'apikey': this.config.SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${this.config.SUPABASE_ANON_KEY}`
                 }
             });
 
             if (response.ok) {
                 const votes = await response.json();
-                if (votes.length >= 2) {
+                if (votes.length >= this.maxVotesPerIP) {
                     this.userVoted = true;
                     this.disableVoting();
                 }
@@ -80,16 +96,24 @@ class VotingSystem {
 
     async submitVote(choice) {
         if (this.userVoted) {
-            this.showMessage('Anda sudah voting 2 kali!', 'warning');
+            this.showMessage(`Anda sudah voting ${this.maxVotesPerIP} kali!`, 'warning');
             return;
         }
 
+        // If Supabase is not configured, use local-only mode
+        if (!this.config.ENABLE_SUPABASE_VOTING || !this.config.SUPABASE_ANON_KEY) {
+            this.voteCounts[choice]++;
+            this.updateVoteUI();
+            this.showResult(choice);
+            return true;
+        }
+
         try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/gas_votes`, {
+            const response = await fetch(`${this.config.SUPABASE_URL}/rest/v1/gas_votes`, {
                 method: 'POST',
                 headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'apikey': this.config.SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${this.config.SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
                     'Prefer': 'return=minimal'
                 },
@@ -110,8 +134,8 @@ class VotingSystem {
                 throw new Error('Vote failed');
             }
         } catch (error) {
-            console.log('Vote error:', error);
-            // Fallback to local-only voting for demo
+            console.log('Vote error (using local fallback):', error);
+            // Fallback to local-only voting
             this.voteCounts[choice]++;
             this.updateVoteUI();
             this.showResult(choice);
